@@ -13,7 +13,18 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // create a new array equal to the size of length
+        var multiArray = new double[length];
+
+        // create for loop that starts at 1, stores number * i into a new variable, adds the value of the new variable to the array, and iterates int length number of times.
+        for (int i = 1; i <= length; i++) // loop starts at 1, checks for total length of the array, increments by 1 each iteration
+        {
+            double newVal = number * i; // stores multiple into a new variable
+            multiArray[i - 1] = newVal; // adds the value of the new variable to the index position in the array (starts at index 0)
+        }
+
+        //return the new array value
+        return multiArray; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +40,18 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // Calculate the split point of the list (use modulo to handle wrapping back to zero)
+        amount %= data.Count;
+        int splitPoint = data.Count - amount;
+
+        // Use GetRange() to grab the elements from the split point to the end
+        List<int> splitData = data.GetRange(splitPoint, data.Count - splitPoint);
+
+        // Use RemoveRange() to remove the elements from the split point to the end
+        data.RemoveRange(splitPoint, data.Count - splitPoint);
+
+        // Use InsertRange() to insert the GetRange() elements into index 0
+        data.InsertRange(0, splitData);
     }
 }
